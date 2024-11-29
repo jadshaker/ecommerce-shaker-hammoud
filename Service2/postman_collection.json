@@ -1,0 +1,73 @@
+{
+    "info": {
+        "name": "Inventory API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Add Goods",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Laptop\",\n  \"category\": \"Electronics\",\n  \"price\": 1200.50,\n  \"description\": \"A high-performance laptop\",\n  \"stock_count\": 50\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/add",
+                    "host": ["{{base_url}}"],
+                    "path": ["add"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Deduct Goods",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/deduct/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["deduct", "1"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Goods",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"price\": 1100.00,\n  \"stock_count\": 45\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/update/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["update", "1"]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5001/api/inventory"
+        }
+    ]
+}

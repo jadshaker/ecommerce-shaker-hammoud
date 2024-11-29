@@ -1,0 +1,99 @@
+{
+    "info": {
+        "name": "Reviews API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Submit Review",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"customer_id\": 1,\n  \"product_id\": 101,\n  \"rating\": 5,\n  \"comment\": \"Amazing product!\",\n  \"review_date\": \"2024-11-29\",\n  \"status\": \"Pending\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/submit",
+                    "host": ["{{base_url}}"],
+                    "path": ["submit"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Review",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Good product but could be improved.\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/update/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["update", "1"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Review",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/delete/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["delete", "1"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Product Reviews",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/product/101",
+                    "host": ["{{base_url}}"],
+                    "path": ["product", "101"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Customer Reviews",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/customer/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["customer", "1"]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000/api/reviews"
+        }
+    ]
+}
