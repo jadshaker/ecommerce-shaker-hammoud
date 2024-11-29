@@ -19,12 +19,14 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS Customer (
             customer_id SERIAL PRIMARY KEY,
-            full_name VARCHAR(255),
-            username VARCHAR(255),
-            age INT,
-            address TEXT,
-            gender VARCHAR(10),
-            wallet_balance DECIMAL(10, 2)
+            full_name VARCHAR(100) NOT NULL,
+            username VARCHAR(50) NOT NULL,
+            password VARCHAR(255) NOT NULL,  -- Password length can be more than 50 characters to meet validation requirements
+            age INT NOT NULL CHECK (age >= 18 AND age <= 120),
+            address VARCHAR(200),
+            gender VARCHAR(10) CHECK (gender IN ('Male', 'Female', 'Other')),
+            wallet_balance DECIMAL(10, 2) DEFAULT 0.00,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """,
         """
