@@ -1,18 +1,21 @@
-from supabase import create_client, Client
 import psycopg2
+from supabase import Client, create_client
 
 url: str = "https://vstesuqxigarpzqrxehj.supabase.co"
-key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzdGVzdXF4aWdhcnB6cXJ4ZWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4Nzc2MzMsImV4cCI6MjA0ODQ1MzYzM30.Rut863Jmq7nQ4DSbI25PHiWmAWAq3NIIo5T32vRtTb4"
+key: str = (
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzdGVzdXF4aWdhcnB6cXJ4ZWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4Nzc2MzMsImV4cCI6MjA0ODQ1MzYzM30.Rut863Jmq7nQ4DSbI25PHiWmAWAq3NIIo5T32vRtTb4"
+)
 supabase: Client = create_client(url, key)
 
 
 db_params = {
-    'host': 'aws-0-us-east-1.pooler.supabase.com',
-    'database': 'postgres',
-    'user': 'postgres.vstesuqxigarpzqrxehj', 
-    'password': 'shakerhamoud',  
-    'port': 6543
+    "host": "aws-0-us-east-1.pooler.supabase.com",
+    "database": "postgres",
+    "user": "postgres.vstesuqxigarpzqrxehj",
+    "password": "shakerhamoud",
+    "port": 6543,
 }
+
 
 def create_tables():
     queries = [
@@ -59,7 +62,7 @@ def create_tables():
             quantity INT,
             total_price DECIMAL(10, 2)
         );
-        """
+        """,
     ]
 
     try:
@@ -74,10 +77,11 @@ def create_tables():
 
     except Exception as conn_err:
         print(f"Connection error: {conn_err}")
-    
+
     finally:
         if conn:
             cursor.close()
             conn.close()
+
 
 create_tables()

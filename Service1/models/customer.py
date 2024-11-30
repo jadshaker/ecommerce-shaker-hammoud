@@ -1,6 +1,7 @@
-from datetime import datetime
 from dataclasses import dataclass, field
+from datetime import datetime
 from typing import Optional
+
 
 @dataclass
 class Customer:
@@ -11,5 +12,7 @@ class Customer:
     address: Optional[str] = None
     gender: Optional[str] = None
     wallet_balance: float = 0.0
-    created_at: datetime = field(default_factory=datetime.utcnow)  # Ensure it's a datetime object
+    created_at: datetime = field(
+        default_factory=datetime.utcnow
+    )  # Ensure it's a datetime object
     customer_id: Optional[int] = None
