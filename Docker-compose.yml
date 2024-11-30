@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  customer_service:
+    build:
+      context: ./Service1
+    ports:
+      - "5000:5000"
+
+  inventory_service:
+    build:
+      context: ./Service2
+    ports:
+      - "5001:5001"
+
+  sales_service:
+    build:
+      context: ./Service3
+    ports:
+      - "5003:5003"
+
+  reviews_service:
+    build:
+      context: ./Service4
+    ports:
+      - "5002:5002"

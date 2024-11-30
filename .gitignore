@@ -163,3 +163,4 @@ cython_debug/
 
 how_to_use.py
 myvenv
+testenv
