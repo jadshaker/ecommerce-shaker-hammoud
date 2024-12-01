@@ -1,5 +1,4 @@
 from werkzeug.security import generate_password_hash
-
 from database_utils.connect import get_supabase_client
 
 
