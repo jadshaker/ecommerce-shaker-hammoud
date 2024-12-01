@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from routes import reviews_bp
 
@@ -16,6 +16,11 @@ def create_app():
     app = Flask(__name__)
     CORS(app)
     app.register_blueprint(reviews_bp, url_prefix="/api/reviews")
+
+    # Health check endpoint
+    @app.route("/health", methods=["GET"])
+    def health_check():
+        return jsonify({"status": "healthy"}), 200
     return app
 
 
