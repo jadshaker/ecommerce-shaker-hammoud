@@ -1,23 +1,41 @@
 import psycopg2
 from supabase import Client, create_client
 
-url: str = "https://vstesuqxigarpzqrxehj.supabase.co"
-key: str = (
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzdGVzdXF4aWdhcnB6cXJ4ZWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4Nzc2MzMsImV4cCI6MjA0ODQ1MzYzM30.Rut863Jmq7nQ4DSbI25PHiWmAWAq3NIIo5T32vRtTb4"
-)
+from config import Config
+
+url: str = Config.SUPABASE.URL
+key: str = Config.SUPABASE.KEY
 supabase: Client = create_client(url, key)
 
 
 db_params = {
     "host": "aws-0-us-east-1.pooler.supabase.com",
     "database": "postgres",
-    "user": "postgres.vstesuqxigarpzqrxehj",
-    "password": "shakerhamoud",
+    "user": Config.SUPABASE.USER,
+    "password": Config.SUPABASE.PASSWORD,
     "port": 6543,
 }
 
 
 def create_tables():
+    """
+    Creates the necessary tables for the ecommerce database if they do not already exist.
+
+    The following tables are created:
+    - Customer: Stores customer information including id, name, username, password, age, address, gender, wallet balance, and creation timestamp.
+    - Product: Stores product information including id, name, category, price, description, and stock count.
+    - Review: Stores reviews given by customers for products including review id, customer id, product id, rating, comment, review date, and status.
+    - Sale: Stores sales transactions including sale id, customer id, product id, sale date, quantity, and total price.
+
+    The function connects to the PostgreSQL database using the provided connection parameters, executes the table creation queries, 
+    and handles any exceptions that occur during the process.
+
+    Raises:
+        Exception: If there is an error connecting to the database or executing the queries.
+
+    Note:
+        The connection parameters should be provided in the `db_params` dictionary.
+    """
     queries = [
         """
         CREATE TABLE IF NOT EXISTS Customer (

@@ -2,7 +2,63 @@ from database_utils.connect import get_supabase_client
 
 
 class SaleService:
+    """
+    SaleService class provides methods to interact with the sales table in the Supabase database.
+    Methods:
+        __init__():
+            Initializes the SaleService instance, setting up the connection to the Supabase client and specifying the sales table name.
+        submit_sale(sale_data):
+            Submits a new sale to the sales table.
+            Args:
+                sale_data (dict): The data of the sale to be submitted.
+            Returns:
+                dict: The submitted sale data if successful, None otherwise.
+            Raises:
+                ValueError: If there is an error submitting the sale.
+        update_sale(sale_id, update_data):
+            Updates an existing sale in the sales table.
+            Args:
+                sale_id (int): The ID of the sale to be updated.
+                update_data (dict): The data to update the sale with.
+            Returns:
+                dict: The updated sale data if successful, None otherwise.
+            Raises:
+                ValueError: If there is an error updating the sale.
+        delete_sale(sale_id):
+            Deletes a sale from the sales table by its ID.
+            Args:
+                sale_id (int): The ID of the sale to be deleted.
+            Returns:
+                list: The data of the deleted sale if successful, None otherwise.
+            Raises:
+                ValueError: If there is an error deleting the sale.
+        get_customer_sales(customer_id):
+            Retrieves all sales for a specific customer from the sales table.
+            Args:
+                customer_id (int): The ID of the customer whose sales are to be retrieved.
+            Returns:
+                list: A list of sales data for the specified customer.
+            Raises:
+                ValueError: If there is an error retrieving the sales.
+        get_available_goods():
+            Retrieves all available goods from the sales table.
+            Returns:
+                list: A list of all available goods data.
+            Raises:
+                ValueError: If there is an error retrieving the available goods.
+    """
+
     def __init__(self):
+        """
+        Initializes the SaleService instance.
+
+        This constructor sets up the connection to the Supabase client and specifies
+        the sales table name.
+
+        Attributes:
+            supabase: The Supabase client instance.
+            sales_table (str): The name of the sales table in the database.
+        """
         self.supabase = get_supabase_client()
         self.sales_table = "sale"
 

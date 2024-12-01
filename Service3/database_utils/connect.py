@@ -1,17 +1,31 @@
 from supabase import create_client
 
-# Load environment variables
+from config import Config
 
 
-# Supabase connection
 class DatabaseConnection:
+    """
+    A singleton class to manage the database connection using Supabase.
+
+    This class ensures that only one instance of the database connection is created
+    and reused throughout the application.
+
+    Attributes:
+        _instance (SupabaseClient): The single instance of the database connection.
+
+    Methods:
+        get_instance():
+            Returns the single instance of the database connection. If the instance
+            does not exist, it creates one using the Supabase URL and KEY from the
+            configuration.
+    """
     _instance = None
 
     @classmethod
     def get_instance(cls):
         if cls._instance is None:
-            url = "https://vstesuqxigarpzqrxehj.supabase.co"
-            key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzdGVzdXF4aWdhcnB6cXJ4ZWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4Nzc2MzMsImV4cCI6MjA0ODQ1MzYzM30.Rut863Jmq7nQ4DSbI25PHiWmAWAq3NIIo5T32vRtTb4"
+            url = Config.SUPABASE.URL
+            key = Config.SUPABASE.KEY
 
             if not url or not key:
                 raise ValueError(
