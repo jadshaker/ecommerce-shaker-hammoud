@@ -3,7 +3,42 @@ from database_utils.connect import get_supabase_client
 
 
 class CustomerService:
+    """
+    A service class to handle customer-related operations.
+
+    Methods
+    -------
+    __init__():
+        Initializes the CustomerService with a Supabase client and table name.
+
+    register_customer(customer_data):
+        Registers a new customer with the provided data.
+
+    get_customer_by_username(username):
+        Retrieves a customer by their username.
+
+    get_all_customers():
+        Retrieves all customers.
+
+    update_customer(username, update_data):
+        Updates customer information based on the provided username and update data.
+
+    delete_customer(username):
+        Deletes a customer based on the provided username.
+
+    charge_wallet(username, amount):
+        Adds money to a customer's wallet based on the provided username and amount.
+
+    deduct_wallet(username, amount):
+        Deducts money from a customer's wallet based on the provided username and amount.
+    """
+
     def __init__(self):
+        """
+        Initializes the CustomerService class.
+
+        Sets up the Supabase client and specifies the table name for customer data.
+        """
         self.supabase = get_supabase_client()
         self.table_name = "customer"
 

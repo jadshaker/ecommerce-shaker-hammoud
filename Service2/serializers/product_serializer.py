@@ -4,6 +4,20 @@ from models.product import Product
 
 
 class ProductSchema(Schema):
+    """
+    ProductSchema is a Marshmallow schema for serializing and deserializing Product objects.
+
+    Attributes:
+        product_id (fields.Int): The unique identifier for the product. This field is read-only.
+        name (fields.Str): The name of the product. This field is required and must be between 1 and 255 characters.
+        category (fields.Str): The category of the product. This field is required and must be less than 255 characters.
+        price (fields.Float): The price of the product. This field is required and must be non-negative.
+        description (fields.Str): The description of the product. This field is optional and can be None.
+        stock_count (fields.Int): The number of items in stock. This field is required and must be non-negative.
+
+    Methods:
+        make_product(data, **kwargs): A post-load method that creates a Product instance from the deserialized data.
+    """
     product_id = fields.Int(dump_only=True)
     name = fields.Str(
         required=True,
