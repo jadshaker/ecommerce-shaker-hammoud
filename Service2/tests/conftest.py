@@ -1,0 +1,6 @@
+def pytest_configure():
+    import os
+    import sys
+
+    topdir = os.path.join(os.path.dirname(__file__), "..")
+    sys.path.append(topdir)
