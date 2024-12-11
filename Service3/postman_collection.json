@@ -1,0 +1,145 @@
+{
+  "info": {
+      "name": "Customer API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+      {
+          "name": "Register Customer",
+          "request": {
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "type": "text"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"full_name\": \"John Doe\",\n  \"username\": \"johndoe123\",\n  \"password\": \"securepassword\",\n  \"age\": 25,\n  \"address\": \"123 Elm Street\",\n  \"gender\": \"Male\"\n}"
+              },
+              "url": {
+                  "raw": "{{base_url}}/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["register"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Delete Customer",
+          "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                  "raw": "{{base_url}}/delete/johndoe123",
+                  "host": ["{{base_url}}"],
+                  "path": ["delete", "johndoe123"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Update Customer",
+          "request": {
+              "method": "PUT",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "type": "text"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"456 Oak Street\",\n  \"gender\": \"Other\"\n}"
+              },
+              "url": {
+                  "raw": "{{base_url}}/update/johndoe123",
+                  "host": ["{{base_url}}"],
+                  "path": ["update", "johndoe123"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Get All Customers",
+          "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                  "raw": "{{base_url}}/all",
+                  "host": ["{{base_url}}"],
+                  "path": ["all"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Get Customer by Username",
+          "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                  "raw": "{{base_url}}/johndoe123",
+                  "host": ["{{base_url}}"],
+                  "path": ["johndoe123"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Charge Wallet",
+          "request": {
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "type": "text"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 50.5\n}"
+              },
+              "url": {
+                  "raw": "{{base_url}}/charge/johndoe123",
+                  "host": ["{{base_url}}"],
+                  "path": ["charge", "johndoe123"]
+              }
+          },
+          "response": []
+      },
+      {
+          "name": "Deduct Wallet",
+          "request": {
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "type": "text"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 20.75\n}"
+              },
+              "url": {
+                  "raw": "{{base_url}}/deduct/johndoe123",
+                  "host": ["{{base_url}}"],
+                  "path": ["deduct", "johndoe123"]
+              }
+          },
+          "response": []
+      }
+  ],
+  "variable": [
+      {
+          "key": "base_url",
+          "value": "http://localhost:5003/api/customers"
+      }
+  ]
+}
